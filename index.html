@@ -38,12 +38,12 @@
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class=""><a href="#home">Home</a></li>
-						<li class=""><a href="#">Link</a></li>
+						<li class=""><a href="tela-chat-bot.html">Chat Bot</a></li>
 					</ul>
                     
 					<ul class="navbar-form navbar-right">
 						<a href="#cadastro" class="btn btn-default">Inscrever-se</a>
-						<a href="#" class="btn btn-info">Login</a>
+						<a href="#" class="btn btn-info" id="login" onclick="Esconder('selected')">Login</a>
 					</ul>
 				</div>
 			</div>
@@ -54,30 +54,30 @@
 							<a class="activer" href="#home"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
 						</li>
 						<li>
-							<a class="" href="#"><i class="fa fa-fire" aria-hidden="true"></i>  Logar-se</a>
+							<a id="exibir" class="" href=""><i class="fa fa-fire" aria-hidden="true"></i>  Logar-se</a>
 						</li>
 						<hr/>
-						<h5 class="text-left text-danger">
+						<h5 class="text-left text-danger titulo-menu">
 							Menu
 						</h5>
                         
                         <li>
-							<a href="#"><img src="//i.ytimg.com/i/4R8DWoMoI7CAwX8_LjQHig/1.jpg" class="avatar-xs"> Informações</a>
+                            <a href="#"><div class="glyphicon glyphicon-chevron-right"> </div>Informações</a>
 						</li>
                         
                         <li>
-							<a href="#"><img src="//i.ytimg.com/i/4R8DWoMoI7CAwX8_LjQHig/1.jpg" class="avatar-xs"> Para quem é esta plataforma</a>
+							<a href="#"><div class="glyphicon glyphicon-chevron-right"> </div> Para quem é esta plataforma</a>
 						</li>
                         
 						<li>
-							<a href="#"><img src="//i.ytimg.com/i/4R8DWoMoI7CAwX8_LjQHig/1.jpg" class="avatar-xs"> Acessar Chat Bot</a>
+							<a href="#"><div class="glyphicon glyphicon-chevron-right"> </div> Acessar Chat Bot</a>
 						</li>
 						<hr/>
 						<p class="container text-left">
 							  Para acessar a ferramenta <br/> você deverá estar logado.
 							<br/>
 							<br/>
-							<a href="#" class="btn btn-info btn-xs" id="showMenu">Inscrever-se</a>
+							<a href="#" class="btn btn-info btn-xs">Inscrever-se</a>
 						</p>
 					</ul>
 				</div>
@@ -86,7 +86,7 @@
         
         
            <!--painel de login-->
-                    <div class="login-botao" id="conteudo">
+        <div class="login-botao" id="selected">
             <div class="account-wall">
                 <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                     alt="">
@@ -98,18 +98,11 @@
                 </form>
             </div>
         </div>
-                    
-
-                    
-                    
-                    
-                    
-                    
-                    
-        
+                        
         
         
 		<div class="container">
+            <div class="inicio-texto">
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="page-header">
@@ -129,6 +122,7 @@
                 <div class="texto">
                 <p>Com esta ferramenta você terá a sua disposição um bot que poderá responder todas suas dúdividas, <br>alguém para conversar e ainda alguém que aprenderá tudo com você! (:</p>
                 </div>
+            </div>
             </div>
             <!-- Projects Row -->
             <div class="blog-section area-padding ">

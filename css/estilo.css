@@ -264,7 +264,8 @@ footer {
     width:300px;
     float: right;
     margin-right: 40px;
-    
+    transition: height 2s;
+    position:relative;
 }
 .form-signin
 {
@@ -365,4 +366,11 @@ footer {
 
 #nav.show {
   left: 0px;
+}
+.titulo-menu {
+    margin-left: 10px;
+}
+
+.inicio-texto {
+    padding-left: 3em;
 }
