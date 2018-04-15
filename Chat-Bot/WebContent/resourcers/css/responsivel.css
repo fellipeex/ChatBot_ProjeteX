@@ -1,0 +1,5 @@
+@media screen and (min-width:760px)
+{
+    #palco-desk { display:block; }
+    #palco-tablet { display:none; }
+}
