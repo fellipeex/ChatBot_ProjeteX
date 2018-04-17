@@ -36,7 +36,7 @@ public class AtendimentoDao {
 	return Pergunta.getId();
   }
 	
-	public int criarResposta(Usuario usuario) {
+	public int criarResposta(Resposta resposta) {
 		String sqlInsert = "INSERT INTO usuario(nome, pupulacao, area VALUES (?,?,?)";
 		
 		try (Connection conn = ConnectionFactory.obtemConexao();
