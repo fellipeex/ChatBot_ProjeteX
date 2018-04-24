@@ -37,16 +37,18 @@ public class ManterUsuarioController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+
 		String pPnome = request.getParameter("Pnome");
-		String pUnome =  request.getParameter("Unome");
+		String pUnome = request.getParameter("Unome");
 		String pEmail =  request.getParameter("email");
 		String pSenha =  request.getParameter("senha");
-		String pNome = pPnome + pUnome;
-		
+		String Pnome  = pPnome + pUnome;
+	
 		//instanciar o javabean
 		Usuario user = new Usuario();
-		user.setNome(pNome);
+		user.setNome(Pnome);
 		user.setEmail(pEmail);
 		user.setSenha(pSenha);
 		
@@ -59,7 +61,7 @@ public class ManterUsuarioController extends HttpServlet {
 		request.setAttribute("usuario",user);
 		
 		RequestDispatcher view = 
-		request.getRequestDispatcher("tela-chat-bot.html");
+		request.getRequestDispatcher("tela-chat-bot.jsp");
 		view.forward(request,response);
 		
 		

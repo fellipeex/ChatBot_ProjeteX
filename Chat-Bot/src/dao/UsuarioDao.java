@@ -8,22 +8,27 @@ import java.sql.SQLException;
 import model.Usuario;
 
 public class UsuarioDao {
+	
 	public int criar(Usuario usuario) {
-		String sqlInsert = "INSERT INTO usuario(nome, pupulacao, area VALUES (?,?,?)";
+		String sqlInsert = "INSERT INTO dbprojeto.usuario (idusuario, nome, email, senha) VALUES (?,?,?,?)";
 		
 		try (Connection conn = ConnectionFactory.obtemConexao();
+				
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);){
-				stm.setString(1, usuario.getNome());
-				stm.setString(2, usuario.getFone());
+				
+			String sqlQuery = "SELECT LAST_INSERT_ID()";
+			try(PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
+					ResultSet rs = stm2.executeQuery();){
+				if (rs.next()) {
+					usuario.setId((rs.getInt(1)));
+					
+				stm.setInt(1, usuario.getId());
+				stm.setString(2, usuario.getNome());	
 				stm.setString(3, usuario.getEmail());
-				stm.setString(3, usuario.getSenha());
+				stm.setString(4, usuario.getSenha());
 				stm.execute();
 				
-				String sqlQuery = "SELECT LAST_INSERT_ID()";
-				try(PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
-						ResultSet rs = stm2.executeQuery();){
-					if (rs.next()) {
-						usuario.setId(rs.getInt(1));
+				
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,23 +68,16 @@ public class UsuarioDao {
 	public Usuario carregar(int id) {
 		Usuario usuario = new Usuario();
 		usuario.setId(id);
-		String sqlSelect = "SELECT nome, fone, email, senha FROM usuario WHERE usuario.email = ? AND usuario.senha = ?";
+		String sqlSelect = "SELECT nome, email, senha FROM dbprojeto.usuario WHERE usuario.idUsuario = ?";
 			try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSelect);){
-				stm.setString(1, usuario.getEmail());
-				stm.setString(2,usuario.getSenha());
+				stm.setInt(1,usuario.getId());
 				
 			try(ResultSet rs = stm.executeQuery();){
 				if (rs.next()) {
-					stm.setString(1, usuario.getNome());
-					stm.setString(2, usuario.getFone());
-					stm.setString(3, usuario.getEmail());
-					stm.setString(3, usuario.getSenha());
-				}else {
-					usuario.setId(-1);stm.setString(1, usuario.getNome());
-					stm.setString(2, usuario.getFone());
-					stm.setString(3, usuario.getEmail());
-					stm.setString(3, usuario.getSenha());
+					usuario.setNome(rs.getString("nome"));
+					usuario.setEmail(rs.getString("email"));
+					usuario.setSenha(rs.getString("senha"));	
 				}
 			}catch (SQLException e) {
 				e.printStackTrace();
@@ -92,7 +90,7 @@ public class UsuarioDao {
 	
 	public boolean autUsuario(Usuario user) {
 		Usuario usuario = new Usuario();
-		String sqlAut = "SELECT email, senha WHERE usuario.email = email AND usuario.senha = senha";
+		String sqlAut = "SELECT email,senha FROM usuario WHERE usuario.email = ? AND usuario.senha = ?";
 			try (Connection conn = ConnectionFactory.obtemConexao();
 					PreparedStatement stm = conn.prepareStatement(sqlAut);){
 				stm.setString(1, user.getEmail());
@@ -100,15 +98,11 @@ public class UsuarioDao {
 				
 			try(ResultSet rs = stm.executeQuery();){
 				if (rs.next()) {
-					stm.setString(1, usuario.getNome());
-					stm.setString(2, usuario.getFone());
-					stm.setString(3, usuario.getEmail());
-					stm.setString(3, usuario.getSenha());
+					stm.setString(1, usuario.getEmail());
+					stm.setString(2, usuario.getSenha());	
 				}else {
-					usuario.setId(-1);stm.setString(1, usuario.getNome());
-					stm.setString(2, usuario.getFone());
-					stm.setString(3, usuario.getEmail());
-					stm.setString(3, usuario.getSenha());
+					stm.setString(1, null);
+					stm.setString(2, null);
 				}
 			}catch (SQLException e) {
 				e.printStackTrace();
@@ -116,7 +110,7 @@ public class UsuarioDao {
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		if(usuario.getSenha() == user.getSenha()) {		
+		if((usuario.getSenha() == user.getSenha())) {		
 			return true;
 		}else {
 			return false;
