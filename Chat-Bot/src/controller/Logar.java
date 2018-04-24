@@ -43,7 +43,7 @@ public class Logar extends HttpServlet {
 		Usuario user = new Usuario();
 		user.setEmail(pEmail);
 		user.setSenha(pSenha);
-
+		
 		//instancia a sevice
 		UsuarioService us = new UsuarioService();
 		if(us.autenticar(user)) {

@@ -90,8 +90,9 @@
 				src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
 				alt="">
 			<form action="Logar.do" method="post" class="form-signin">
-				<input type="text" class="form-control" placeholder="email" required
-					autofocus> <input type="password" class="form-control"
+				<input type="text" name="email"class="form-control" placeholder="email" required
+					autofocus>
+				 <input name="senha" type="password" class="form-control"
 					placeholder="senha" required>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					Sign in</button>
