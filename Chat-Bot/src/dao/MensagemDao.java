@@ -35,13 +35,12 @@ public class MensagemDao {
 	}
   }
 	
-	public void criarResposta(Resposta resposta, Pergunta pergunta) {
-		String sqlInsert = "INSERT INTO tblresposta(idrespostas, pegunta, Resposta VALUES (?,?,?)";
+	public void criarResposta(Resposta resposta) {
+		String sqlInsert = "INSERT INTO tblRespostas (pegunta) VALUES (?)";
 		
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);){
 				stm.setInt(1, resposta.getIdRespostas());
-				stm.setString(2, pergunta.getPergunta());
 				stm.setString(3, resposta.getResposta());
 				stm.execute();
 				
@@ -58,4 +57,25 @@ public class MensagemDao {
 		e.printStackTrace();
 	}
   }
+	
+	//retorna uma pergunta do sistema para o usuario
+	public String buscarPergunta(Resposta resposta) {
+		String resultado = null;
+		String sqlSearch = "SELECT reposta FROM dbprojeto.tblRespostas where pergunta = ?";
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlSearch);){
+				stm.setString(1,resposta.getPalavraChave());
+				
+			try(ResultSet rs = stm.executeQuery();){
+				if(rs.next()) {
+					resultado = rs.getString("pergunta");
+				}
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return resultado;
+	}
 }

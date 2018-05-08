@@ -2,6 +2,8 @@
 <html lang="fr-FR">
 
 <head>
+<%@ page import="java.util.ArrayList"%>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,7 +93,7 @@
 
 
 			<div class="tabela">
-				<h2>RelatÃ³rios de usabilidade</h2>
+				<h2>Relatórios de usabilidade</h2>
 				<div class="panel panel-default tabela-estilo">
 					<!-- Default panel contents -->
 					<div class="panel-heading">Panel heading</div>
@@ -148,7 +150,7 @@
 			</div>
 			<br> <label for="comment">Comment:</label>
 			<textarea class="form-control"
-				placeholder="Digite a sua dÃºvida e entraremos em contato em breve..."
+				placeholder="Digite a sua dúvida e entraremos em contato em breve..."
 				rows="5" id="comment"></textarea>
 		</div>
 	</div>
@@ -183,6 +185,8 @@
 		<!-- mensagems do chat -->
 		<div class="popup-messages">
 			<div class="direct-chat-messages">
+			
+			
 				<!-- Message. Default to the left -->
 				<div class="direct-chat-msg doted-border">
 					<div class="direct-chat-info clearfix">
@@ -214,19 +218,21 @@
 				<div class="chat-box-single-line">
 					<abbr class="timestamp">October 9th, 2015</abbr>
 				</div>
-
+				
+				<c:forEach var="respostas" items="${respostas_sist}">
 				<!-- Message. Default to the left -->
 				<div class="direct-chat-msg doted-border">
 					<div class="direct-chat-info clearfix">
 						<span class="direct-chat-name pull-left">Mensagem do
-							Sistema</span>
+							Usuario</span>
 					</div>
 					<!-- /.direct-chat-info -->
 					<img alt="message user image"
 						src="http://bootsnipp.com/img/avatars/bcf1c0d13e5500875fdd5a7e8ad9752ee16e7462.jpg"
 						class="direct-chat-img">
 					<!-- /.direct-chat-img -->
-					<div class="direct-chat-text">Resposta do usuario: 1</div>
+					<div class="direct-chat-text">Resposta do usuario: ${resposta.resposta}
+					</div>
 					<div class="direct-chat-info clearfix">
 						<span class="direct-chat-timestamp pull-right">Hora ñ
 							informada</span>
@@ -238,16 +244,18 @@
 					<!-- /.direct-chat-text -->
 				</div>
 				<!-- /.direct-chat-msg -->
+				
+				</c:forEach>
 			</div>
 		</div>
 
 
 		<div class="popup-messages-footer">
-			<form action="EnviarMensagem.do">
+			<form action="controller.do">
 				<input type="text" class="form-control" placeholder="Digite sua mensagem..." rows="10" cols="40" required
 				autofocus>
 				
-				<button class="bg_none pull-right">
+				<button class="bg_none pull-right" type="submit" name="command" value="criarResposta">
 					<i class="glyphicon glyphicon-thumbs-up"></i>
 				</button>
 			</form>

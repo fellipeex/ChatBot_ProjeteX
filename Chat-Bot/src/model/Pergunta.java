@@ -35,5 +35,4 @@ public class Pergunta extends Mensagem{
 		this.tipoPergunta = tipoPergunta;
 	}
 	
-
 }	

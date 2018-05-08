@@ -1,18 +1,19 @@
 package model;
 
+
 public class Resposta extends Mensagem{
-	private int idRespostas;
+	private int idResposta;
 	private String resposta;
 	
 	public Resposta() {
 	}
 
 	public int getIdRespostas() {
-		return idRespostas;
+		return idResposta;
 	}
 
 	public void setIdRespostas(int idRespostas) {
-		this.idRespostas = idRespostas;
+		this.idResposta = idRespostas;
 	}
 
 	public String getResposta() {
@@ -22,7 +23,9 @@ public class Resposta extends Mensagem{
 	public void setResposta(String resposta) {
 		this.resposta = resposta;
 	}
-	
-	
-	
+
+	public String palChave() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

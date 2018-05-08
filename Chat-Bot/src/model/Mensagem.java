@@ -38,8 +38,5 @@ public class Mensagem {
 	public void setPalavraChave(String palavraChave) {
 		this.palavraChave = palavraChave;
 	}
-	
-	
-	
-	
+		
 }

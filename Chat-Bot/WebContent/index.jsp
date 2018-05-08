@@ -60,11 +60,11 @@
 					<h5 class="text-left text-danger titulo-menu">Menu</h5>
 
 					<li><a href="#">
-							<div class="glyphicon glyphicon-chevron-right"></div>InformaÃ§Ãµes
+							<div class="glyphicon glyphicon-chevron-right"></div>Informações
 					</a></li>
 
 					<li><a href="#">
-							<div class="glyphicon glyphicon-chevron-right"></div> Para quem Ã©
+							<div class="glyphicon glyphicon-chevron-right"></div> Para quem é
 							esta plataforma
 					</a></li>
 
@@ -74,7 +74,7 @@
 					</a></li>
 					<hr />
 					<p class="container text-left">
-						Para acessar a ferramenta <br /> vocÃª deverÃ¡ estar logado. <br />
+						Para acessar a ferramenta <br /> você deverá estar logado. <br />
 						<br /> <a href="#cadastro" class="btn btn-info btn-xs">Inscrever-se</a>
 					</p>
 				</ul>
@@ -84,17 +84,17 @@
 
 
 	<!--painel de login-->
-	<div class="login-botao" action="Logar.do" method="post" id="selected">
+	<div class="login-botao" id="selected">
 		<div class="account-wall">
 			<img class="profile-img"
 				src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
 				alt="">
-			<form action="Logar.do" method="post" class="form-signin">
-				<input type="text" name="email"class="form-control" placeholder="email" required
+			<form action="controller.do" method="post" class="form-signin">
+				<input type="email" name="email"class="form-control" placeholder="email" required
 					autofocus>
 				 <input name="senha" type="password" class="form-control"
 					placeholder="senha" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<button class="btn btn-lg btn-primary btn-block" type="submit" name="command" value="FazerLogind">
 					Sign in</button>
 			</form>
 		</div>
@@ -108,9 +108,9 @@
 				<div class="col-lg-12">
 					<h1 class="page-header">
 						<div class="glyphicon glyphicon-hand-right"></div>
-						InformaÃ§Ãµes <small>
+						Informações <small>
 							<h5 class="pull-right">
-								O que vocÃª poderÃ¡ fazer com esta ferramenta <a href="#"
+								O que você poderá fazer com esta ferramenta <a href="#"
 									class="btn btn-danger btn-xs"><i
 									class="glyphicon glyphicon-question-sign" aria-hidden="true"></i></a>
 							</h5>
@@ -122,9 +122,9 @@
 			<div class="row">
 				<div class="texto">
 					<p>
-						Com esta ferramenta vocÃª terÃ¡ a sua disposiÃ§Ã£o um bot que poderÃ¡
-						responder todas suas dÃºdividas, <br>alguÃ©m para conversar e
-						ainda alguÃ©m que aprenderÃ¡ tudo com vocÃª! (:
+						Com esta ferramenta você terá a sua disposição um bot que poderá
+						responder todas suas duvidas, <br>alguém para conversar e
+						ainda alguém que aprenderá tudo com você! (:
 					</p>
 				</div>
 			</div>
@@ -142,9 +142,9 @@
 							</div>
 							<div class="blog-box-content">
 								<h4>
-									<a href="#">AÃ§Ãµes do Bot</a>
+									<a href="#">Ações do Bot</a>
 								</h4>
-								<p>O bot realiza diversar funÃ§Ãµes a x por exemplo permite
+								<p>O bot realiza diversar funções a x por exemplo permite
 									que ele te responda o que voce quiser perguntar.</p>
 								<a href="" class="btn btn-default site-btn">Experimente!</a>
 							</div>
@@ -160,11 +160,11 @@
 							</div>
 							<div class="blog-box-content">
 								<h4>
-									<a href="#">Recursos Fantasticos</a>
+									<a hre	f="#">Recursos Fantasticos</a>
 								</h4>
-								<p>GraÃ§as a uma avanÃ§ada tecnologia de inteligencia
+								<p>Graças a uma avançaada tecnologia de inteligencia
 									artificial o seu bot podera consultar uma enorme base de dados
-									feita por vc e poderÃ¡ prever e responder suas princiapis
+									feita por vc e poderá prever e responder suas principais
 									duvidas.</p>
 								<a href="" class="btn btn-default site-btn">Experimente!</a>
 							</div>
@@ -182,10 +182,10 @@
 								<h4>
 									<a href="#">Acesse de qualquer lugar</a>
 								</h4>
-								<p>ApÃ³s se inscrever vocÃª poderÃ¡ acessar o seu bot de
-									qualquer lugar do mundo de forma rÃ¡pida e fÃ¡cil sem necessidade
+								<p>ApÃ³s se inscrever você poderá acessar o seu bot de
+									qualquer lugar do mundo de forma rápida e fácil sem necessidade
 									de instalar nenhum software</p>
-								<a href="" class="btn btn-default site-btn">Experimente!</a>
+								<a href="#cadatrar" class="btn btn-default site-btn">Experimente!</a>
 							</div>
 						</div>
 					</div>
@@ -232,7 +232,7 @@
 												placeholder="Nova Senha" type="password" />
 
 											<button class="btn btn-lg btn-primary btn-block"
-												type="submit">Sign up</button>
+												type="submit" name="command" value="FazerLogin">Sign up</button>
 										</form>
 									</div>
 								</div>
