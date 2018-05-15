@@ -26,7 +26,7 @@
 </head>
 
 <body>
-	<c:import url="Menu.jsp"/>
+<c:import url="Menu.jsp"/>
 
 	<!--painel de login-->
 	<div class="login-botao" id="selected">
@@ -54,7 +54,7 @@
 					<div class="row">
 						<div
 							class="col-xs-12 col-sm-12 col-md-4 well well-sm conteudo-inscrever">
-							<legend>Inscreva-se para poder acessar (:</legend>
+							<legend>Usuario invalido, tenta novamente ou se inscreva para poder acesar</legend>
 							<form action="controller.do" method="post" class="form"
 								role="form">
 								<div class="row">

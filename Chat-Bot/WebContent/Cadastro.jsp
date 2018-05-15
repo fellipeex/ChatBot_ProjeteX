@@ -1,5 +1,6 @@
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%@
-taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="pt">
 <meta charset="UTF-8">
@@ -25,81 +26,23 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 </head>
 
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand point" id="menu-toggle"><i
-				id="menu-toggle" class="fa fa-bars" aria-hidden="true"></i></a> <a
-				class="navbar-brand" href="#"> CHAT BOT</a>
-		</div>
-		<div class="container-fluid">
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class=""><a href="infr">Home</a></li>
-					<li class=""><a href="tela-chat-bot.html">Chat Bot</a></li>
-				</ul>
-
-				<ul class="navbar-form navbar-right">
-					<a href="#cadastro" class="btn btn-default">Inscrever-se</a>
-					<a href="#" class="btn btn-info" id="teste">Login</a>
-				</ul>
-			</div>
-		</div>
-		<div id="wrapper">
-			<div id="sidebar-wrapper">
-				<ul class="sidebar-nav">
-
-
-					<h5 class="text-left text-danger titulo-menu">Menu</h5>
-
-					<li><a href="#">
-							<div class="glyphicon glyphicon-chevron-right"></div>InformaÃ§Ãµes
-					</a></li>
-
-					<li><a href="#">
-							<div class="glyphicon glyphicon-chevron-right"></div> Para quem
-							Ã© esta plataforma
-					</a></li>
-
-					<li><a href="#">
-							<div class="glyphicon glyphicon-chevron-right"></div> Acessar
-							Chat Bot
-					</a></li>
-					<hr />
-					<p class="container text-left">
-						Para acessar a ferramenta <br /> vocÃª deverÃ¡ estar logado. <br />
-						<br /> <a href="#cadastro" class="btn btn-info btn-xs">Inscrever-se</a>
-					</p>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
+<c:import url="Menu.jsp"/>
 
 	<!--painel de login-->
-	<div class="login-botao" action="Logar.do" method="post" id="selected">
+	<div class="login-botao" id="selected">
 		<div class="account-wall">
 			<img class="profile-img"
 				src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
 				alt="">
-			<form action="Logar.do" method="post" class="form-signin">
-				<input type="text" name="email" class="form-control"
+			<form action="controller.do" method="post" class="form-signin">
+				<input type="email" name="email" class="form-control"
 					placeholder="email" required autofocus> <input name="senha"
 					type="password" class="form-control" placeholder="senha" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					Sign in</button>
+				<button class="btn btn-lg btn-primary btn-block" type="submit"
+					name="command" value="FazerLogin">Sign in</button>
 			</form>
 		</div>
 	</div>
-
-	<h1>Usuario não encontrado</h1>
-
 
 	<!-- Projects Row -->
 	<div class="row" id="cadastro">
@@ -135,8 +78,8 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 										type="email" /> <input class="form-control" name="senha"
 										placeholder="Nova Senha" type="password" />
 
-									<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-										up</button>
+									<button class="btn btn-lg btn-primary btn-block" type="submit"
+										name="command" value="FazerLogin">Sign up</button>
 								</form>
 							</div>
 						</div>

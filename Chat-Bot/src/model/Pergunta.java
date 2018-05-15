@@ -5,6 +5,7 @@ public class Pergunta extends Mensagem{
 	
 	private int idPergunta;
 	private String pergunta;
+	private String resposta;
 	private String tipoPergunta;
 	
 	public Pergunta() {
@@ -33,6 +34,14 @@ public class Pergunta extends Mensagem{
 
 	public void setTipoPergunta(String tipoPergunta) {
 		this.tipoPergunta = tipoPergunta;
+	}
+
+	public String getResposta() {
+		return resposta;
+	}
+
+	public void setResposta(String resposta) {
+		this.resposta = resposta;
 	}
 	
 }	

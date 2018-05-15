@@ -15,23 +15,22 @@ public class FazerLogin implements Command {
 	@Override
 	public void executar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String nome = request.getParameter("username");
-		String senha = request.getParameter("passwd");
+		String pEmail = request.getParameter("email");
+		String pSenha = request.getParameter("senha");
 
 		Usuario usuario = new Usuario();
-		usuario.setNome(nome);
-		usuario.setSenha(senha);
+		usuario.setEmail(pEmail);
+		usuario.setSenha(pSenha);
 		UsuarioService service = new UsuarioService();
 		
 		if(service.validar(usuario)){
 			HttpSession session = request.getSession();
 			session.setAttribute("logado", usuario);
 			System.out.println("Logou "+usuario);
+			response.sendRedirect("tela-chat-bot.jsp");
 		} else {
-			System.out.println("Não Logou "+usuario);
-			throw new ServletException("Usuário/Senha inválidos");
+			response.sendRedirect("UsuarioInvalido.jsp");
 		}
-		response.sendRedirect("index.jsp");
 	}
 
 }

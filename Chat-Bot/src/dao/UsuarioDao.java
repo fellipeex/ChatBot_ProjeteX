@@ -117,32 +117,32 @@ public class UsuarioDao {
 	}
 	
 	public boolean validar(Usuario usuario) {
-		String sqlSelect = "SELECT username, password FROM usuario "
-				+ "WHERE username = ? and password = ?";
+		String sqlSelect = "SELECT email, senha FROM usuario "
+				+ "WHERE email = ? and senha = ?";
 		// pega a conexão em um try normal para que ela não seja fechada
-		try {
-			Connection conn = ConnectionFactory.obtemConexao();
-			// usando o try with resources do Java 7, que fecha o que abriu
-			try (PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-				stm.setString(1, usuario.getNome());
-				stm.setString(2, usuario.getSenha());
-				try (ResultSet rs = stm.executeQuery();) {
-					if (rs.next()) {
-						return true;
-					} else {
-						return false;
+				try {
+					Connection conn = ConnectionFactory.obtemConexao();
+					// usando o try with resources do Java 7, que fecha o que abriu
+					try (PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+						stm.setString(1, usuario.getEmail());
+						stm.setString(2, usuario.getSenha());
+						try (ResultSet rs = stm.executeQuery();) {
+							if (rs.next()) {
+								return true;
+							} else {
+								return false;
+							}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					} catch (SQLException e1) {
+						System.out.print(e1.getStackTrace());
 					}
-				} catch (SQLException e) {
-					e.printStackTrace();
+				} catch (SQLException e2) {
+					e2.printStackTrace();
 				}
-			} catch (SQLException e1) {
-				System.out.print(e1.getStackTrace());
+				return false;
 			}
-		} catch (SQLException e2) {
-			e2.printStackTrace();
-		}
-		return false;
-	}
 	
 	
 }
