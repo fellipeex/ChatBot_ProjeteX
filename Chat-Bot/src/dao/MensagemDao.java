@@ -14,29 +14,28 @@ public class MensagemDao {
 	
 	public void criarResposta(Resposta resposta) {
 		
-		String sqlInsert = "INSERT INTO tblMensagem (idMensagem,resposta,palavraChave) VALUES (?,?,?)";
+		String sqlInsert = "INSERT INTO tblNovasRespostas (idMensagem,resposta,palavraChave) VALUES (?,?,?)";
 			try (Connection conn = ConnectionFactory.obtemConexao();
 					
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);){
-							
+					stm.setInt(1, resposta.getIdPalavraChave());
+					stm.setString(2, resposta.getResposta());
+					stm.setString(3, resposta.getPalavraChave());
+					stm.execute();
 				String sqlQuery = "SELECT LAST_INSERT_ID()";
-				try(PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
-						ResultSet rs = stm2.executeQuery();){
+				try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
+						ResultSet rs = stm2.executeQuery();) {
 					if (rs.next()) {
-						resposta.setIdRespostas((rs.getInt(1)));
-						stm.setInt(1, resposta.getIdRespostas());
-						stm.setString(2, resposta.getResposta());
-						stm.setString(3, resposta.getPalavraChave());
-						
-						stm.execute();
-			}		
+						resposta.setIdPalavraChave((rs.getInt(1)));
+					}	
+							
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	} catch(SQLException e) {
 		e.printStackTrace();
 	}
-  }
+	}
 	
 	public void criarResposta1(Resposta resposta) {
 		String sqlInsert = "INSERT INTO tblRespostas (pegunta) VALUES (?)";
@@ -84,7 +83,7 @@ public class MensagemDao {
 
 	public String respondePergunta(Pergunta pergunta) {
 		String resultado = null;
-		String sqlSearch = "SELECT reposta FROM dbprojeto.tblRespostas where pergunta = ?";
+		String sqlSearch = "SELECT reposta FROM dbprojeto.tblNovasRespostas where pergunta = ?";
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSearch);){
 				stm.setString(1,pergunta.getPalavraChave());

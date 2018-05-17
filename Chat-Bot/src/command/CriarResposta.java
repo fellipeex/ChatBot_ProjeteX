@@ -38,37 +38,25 @@ public class CriarResposta implements Command {
 			lista_pergunta = new ArrayList<Pergunta>();
 			lista_pergunta.add(pergunta);
 		}
-		
+
 		session.setAttribute("lista_pergunta", lista_pergunta);
-		view = request.getRequestDispatcher("tela-chat-bot.jsp");
+		view = request.getRequestDispatcher("ChatBot.jsp");
 
 		// verifica a resposta para pergunta do usuario
 		Resposta resposta = new Resposta();
 		ArrayList<Resposta> resultado_respostas = rs.verificarResposta(pergunta);
-
+		session.setAttribute("lista_respostas_validas", resultado_respostas);
+			
 		// coloca as perguntas que estao na session em um array
 		@SuppressWarnings("unchecked")
 		ArrayList<Resposta> lista_resposta = (ArrayList<Resposta>) session.getAttribute("lista_resposta");
-
-		// vendo o tamanho do vetor de resposta e adicionando uma a mais do que esta na
-		// em seguida ja adiciona na session a lista
+		
+		
 		if (lista_resposta != null) {
-			int tamanhoArray = lista_resposta.size();
-			for (int i = 0; i < tamanhoArray; i++) {
-				Resposta respostaInserir;
-				//verifica se a posição do array nao vai dar erro
-				if(tamanhoArray == 0) {
-					respostaInserir = resultado_respostas.get(0);
-				}else if (resultado_respostas.size() != 0){
-					respostaInserir = resultado_respostas.get(i);
-				}else {
-					respostaInserir = resultado_respostas.get(0);
-				}
-				lista_resposta.add(respostaInserir);
-			}
+			lista_resposta.add(1, resultado_respostas.get(1));
 		} else {
-			resposta = resultado_respostas.get(0);
 			lista_resposta = new ArrayList<Resposta>();
+			resposta = resultado_respostas.get(0);
 			lista_resposta.add(0, resposta);
 		}
 

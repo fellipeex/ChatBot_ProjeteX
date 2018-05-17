@@ -87,47 +87,22 @@ public class UsuarioDao {
 		return usuario;
 	}
 	
-	public boolean autUsuario(Usuario user) {
-		Usuario usuario = new Usuario();
-		String sqlAut = "SELECT email,senha FROM usuario WHERE usuario.email = ? AND usuario.senha = ?";
-			try (Connection conn = ConnectionFactory.obtemConexao();
-					PreparedStatement stm = conn.prepareStatement(sqlAut);){
-				stm.setString(1, user.getEmail());
-				stm.setString(2, user.getSenha());
-				
-			try(ResultSet rs = stm.executeQuery();){
-				if (rs.next()) {
-					stm.setString(1, usuario.getEmail());
-					stm.setString(2, usuario.getSenha());	
-				}else {
-					stm.setString(1, null);
-					stm.setString(2, null);
-				}
-			}catch (SQLException e) {
-				e.printStackTrace();
-			}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		if((usuario.getSenha() == user.getSenha())) {		
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
+
 	public boolean validar(Usuario usuario) {
-		String sqlSelect = "SELECT email, senha FROM usuario "
+		String sqlSelect = "SELECT nome,email, senha FROM usuario "
 				+ "WHERE email = ? and senha = ?";
 		// pega a conexão em um try normal para que ela não seja fechada
 				try {
 					Connection conn = ConnectionFactory.obtemConexao();
 					// usando o try with resources do Java 7, que fecha o que abriu
-					try (PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+					try (PreparedStatement stm = conn.prepareStatement(sqlSelect);){
 						stm.setString(1, usuario.getEmail());
 						stm.setString(2, usuario.getSenha());
 						try (ResultSet rs = stm.executeQuery();) {
 							if (rs.next()) {
+								usuario.setNome(rs.getString("nome"));
+								usuario.setEmail(rs.getString("email"));
+								usuario.setSenha(rs.getString("senha"));
 								return true;
 							} else {
 								return false;
