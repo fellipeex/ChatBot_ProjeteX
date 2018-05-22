@@ -23,20 +23,24 @@ public class ValidarResposta implements Command {
 
 		@SuppressWarnings("unchecked")
 		ArrayList<Resposta> lista_respostas = (ArrayList<Resposta>) session.getAttribute("lista_respostas_");
-
+		//verifica se a lista nao veio nula
 		if (lista_resp_val != null) {
+			//percorre o array de respostas validas
 			for (int i = 0; i < lista_resp_val.size(); i++) {
-				Resposta resposta_usuario = lista_respostas.get(i);
+				//pega uma resposta das validas
+				Resposta resposta_resultado = lista_resp_val.get(i);
 
 				if (lista_respostas != null) {
-					Resposta resposta_resultado = lista_resp_val.get(0);
+					//comprara se uma valida é igual a que esta na session
+					Resposta resposta_usuario = lista_respostas.get(0);
+					
+					
 					if (resposta_usuario.getPalavraChave() == resposta_resultado.getPalavraChave()) {
 						lista_respostas.remove(0);
 						lista_respostas.add(0, lista_resp_val.get(0));
 
 					}
 				}
-
 			}
 		}
 

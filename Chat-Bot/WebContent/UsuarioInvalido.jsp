@@ -55,27 +55,7 @@
 						<div
 							class="col-xs-12 col-sm-12 col-md-4 well well-sm conteudo-inscrever">
 							<legend>Usuario invalido, tenta novamente ou se inscreva para poder acesar</legend>
-							<form action="controller.do" method="post" class="form"
-								role="form">
-								<div class="row">
-									<div class="col-xs-6 col-md-6">
-										<input class="form-control" name="Pnome"
-											placeholder="Primeiro Nome" type="text" required autofocus />
-									</div>
-									<div class="col-xs-6 col-md-6">
-										<input class="form-control" name="Unome"
-											placeholder="Ultimo Nome" type="text" required />
-									</div>
-								</div>
-								<input class="form-control" name="email" placeholder="Seu Email"
-									type="email" /> <input class="form-control" name=""
-									placeholder="Entre Novamente " type="email" /> <input
-									class="form-control" name="senha" placeholder="Nova Senha"
-									type="password" />
-
-								<button class="btn btn-lg btn-primary btn-block" type="submit"
-									name="command" value="CriarUsuario">Sign up</button>
-							</form>
+							
 						</div>
 					</div>
 				</div>

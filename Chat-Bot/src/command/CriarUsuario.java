@@ -30,11 +30,9 @@ public class CriarUsuario implements Command{
 		//instanciar a service
 		UsuarioService us = new UsuarioService();
 		us.criar(user);
-		user = us.carregar(user.getId());
 		
 		//enviar para o jsp
 		request.setAttribute("usuario",user);
-		
 		RequestDispatcher view = 
 		request.getRequestDispatcher("tela-chat-bot.jsp");
 		view.forward(request,response);

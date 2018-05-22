@@ -28,8 +28,8 @@
 			</ul>
 
 			<ul class="navbar-form navbar-right">
-				<a href="#cadastro" class="btn btn-default">Inscrever-se</a>
-				<a href="#" class="btn btn-info" id="teste">Login</a>
+				<a href="Cadastro.jsp" class="btn btn-default">Inscrever-se</a>
+				<button data-toggle="collapse" data-target="#demo">Login</button>
 			</ul>
 		</div>
 	</div>
@@ -69,3 +69,19 @@
 		</div>
 	</div>
 </nav>
+
+<!--painel de login-->
+<div class="collapse" id="demo">
+	<div class="account-wall">
+		<img class="profile-img"
+			src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+			alt="">
+		<form action="controller.do" method="post" class="form-signin">
+			<input type="email" name="email" class="form-control"
+				placeholder="email" required autofocus> <input name="senha"
+				type="password" class="form-control" placeholder="senha" required>
+			<button class="button1 btn btn-lg btn-primary btn-block"
+				type="submit" name="command" value="FazerLogin">Sign in</button>
+		</form>
+	</div>
+</div>

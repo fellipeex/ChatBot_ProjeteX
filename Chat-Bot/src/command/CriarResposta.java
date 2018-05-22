@@ -53,7 +53,7 @@ public class CriarResposta implements Command {
 		
 		
 		if (lista_resposta != null) {
-			lista_resposta.add(1, resultado_respostas.get(1));
+			lista_resposta.add(0, resultado_respostas.get(0));
 		} else {
 			lista_resposta = new ArrayList<Resposta>();
 			resposta = resultado_respostas.get(0);
@@ -63,7 +63,12 @@ public class CriarResposta implements Command {
 		// adiciona a resposta do sistema na session
 		session.setAttribute("lista_resposta", lista_resposta);
 		view.forward(request, response);
-
+		
+		int contador = (int) session.getAttribute("contator");
+		
+		if (contador != null) {
+			contador ++;
+		}
 	}
 
 }

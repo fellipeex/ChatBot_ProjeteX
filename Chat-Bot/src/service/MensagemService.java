@@ -2,9 +2,12 @@ package service;
 
 import java.util.ArrayList;
 
+import javax.websocket.Session;
+
 import dao.MensagemDao;
 import model.Pergunta;
 import model.Resposta;
+import model.Usuario;
 
 public class MensagemService {
 	MensagemDao dao = new MensagemDao();
@@ -13,8 +16,8 @@ public class MensagemService {
 		dao.criarPergunta(pergunta);
 	}
 
-	public void criarResposta(Resposta resposta) {
-		dao.criarResposta(resposta);
+	public void criarResposta(Resposta resposta, Usuario usuario) {
+		dao.criarResposta(resposta, usuario);
 	}
 
 	public String buscarPergunta(Resposta resposta) {
@@ -24,7 +27,7 @@ public class MensagemService {
 
 	public ArrayList<Resposta> verificarResposta(Pergunta pergunta) {
 		ArrayList<Resposta> lista_resultado = new ArrayList<Resposta>();
-		ArrayList<String> palavras_validas = new ArrayList<String>();
+		ArrayList<Resposta> palavras_validas = new ArrayList<Resposta>();
 		ArrayList<Resposta> lista_palChave = new ArrayList<Resposta>();
 		String[] respostaUser;
 		String resultado = null;
@@ -33,33 +36,28 @@ public class MensagemService {
 		respostaUser = pergunta.getPergunta().split(" ");
 		lista_palChave = dao.carregaPalChave();
 
-		for (int j = 0; j < respostaUser.length; j++) {
-			String resposta_usuario = respostaUser[j];
-
+		// verifica se a palavra é valida
+		for (String r : respostaUser) {
 			// compara a reposta do usuario com o array de palavras chaves
-			for (int i = 0; i < lista_palChave.size(); i++) {
-				Resposta resposta_palChave = lista_palChave.get(i);
-				if (resposta_usuario == resposta_palChave.getPalavraChave()) {
-					String palavra_valida = resposta_palChave.getPalavraChave();
-					palavras_validas.add(palavra_valida);
+			for (Resposta r_pchave : lista_palChave) {
+				// coloca a palavra no array
+				if (r.equals(r_pchave.getPalavraChave())) {
+					palavras_validas.add(r_pchave);
 				}
 			}
 		}
 
-		for (int i = 0; i < palavras_validas.size(); i++) {
+		// coloca a palavra valida no array de resposta da session p o usuario
+		if (!palavras_validas.isEmpty()) {
+			for (Resposta r : palavras_validas) {
+				lista_resultado.add(r);
+			}
+		} else {
+			resultado = "não entendi o que voce disse, podemos começar de novo?";
 			Resposta resposta = new Resposta();
-			String palValida = palavras_validas.get(i);
-			resposta.setPalavraChave(palValida);
+			resposta.setResposta(resultado);
 			lista_resultado.add(resposta);
 		}
-		if (!lista_resultado.isEmpty()) {
-			return lista_resultado;
-		}
-		resultado = "não entendi o que voce disse, podemos começar de novo?";
-		Resposta resposta = new Resposta();
-		resposta.setResposta(resultado);
-		lista_resultado.add(resposta);
 		return lista_resultado;
-
 	}
 }
