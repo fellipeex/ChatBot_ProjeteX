@@ -798,3 +798,8 @@ body
     width: 40em;
     left: 20em 
 }
+
+.menu {
+    width:20em;
+    margin-left:70%;
+}

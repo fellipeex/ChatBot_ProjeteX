@@ -13,6 +13,10 @@ public class CriarRelatorio implements Command{
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
+		
+		
+		
 	}
 
 }

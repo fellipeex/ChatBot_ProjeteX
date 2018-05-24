@@ -91,48 +91,48 @@
 
 
 								<c:if test="${not empty lista_pergunta}">
-										<c:if test="${not empty lista_resposta}">
-											<c:forEach var="mensagem" items="${lista_pergunta}">
-												<c:forEach var="mensagemSist" items="${lista_resposta}">
-													<li class="left clearfix"><span
-														class="chat-img pull-left"> <img
-															src="http://placehold.it/50/55C1E7/fff&text=U"
-															alt="User Avatar" class="img-circle" />
-													</span>
-														<div class="chat-body clearfix">
-															<div class="header">
-																<strong class="primary-font">Jack Sparrow</strong> <small
-																	class="pull-right text-muted"> <span
-																	class="glyphicon glyphicon-time"></span>14 mins ago
-																</small>
-															</div>
-															${mensagem.pergunta}
-														</div></li>
+									<c:if test="${not empty lista_resposta}">
+										<c:forEach var="mensagem" items="${lista_pergunta}">
+											<c:forEach var="mensagemSist" items="${lista_resposta}">
+												<li class="left clearfix"><span
+													class="chat-img pull-left"> <img
+														src="http://placehold.it/50/55C1E7/fff&text=U"
+														alt="User Avatar" class="img-circle" />
+												</span>
+													<div class="chat-body clearfix">
+														<div class="header">
+															<strong class="primary-font">Jack Sparrow</strong> <small
+																class="pull-right text-muted"> <span
+																class="glyphicon glyphicon-time"></span>14 mins ago
+															</small>
+														</div>
+														${mensagem.pergunta}
+													</div></li>
 
 
-													<li class="right clearfix"><span
-														class="chat-img pull-right"> <img
-															src="http://placehold.it/50/FA6F57/fff&text=ME"
-															alt="User Avatar" class="img-circle" />
-													</span>
-														<div class="chat-body clearfix">
-															<div class="header">
-																<small class=" text-muted"><span
-																	class="glyphicon glyphicon-time"></span>15 mins ago</small> <strong
-																	class="pull-right primary-font">
+												<li class="right clearfix"><span
+													class="chat-img pull-right"> <img
+														src="http://placehold.it/50/FA6F57/fff&text=ME"
+														alt="User Avatar" class="img-circle" />
+												</span>
+													<div class="chat-body clearfix">
+														<div class="header">
+															<small class=" text-muted"><span
+																class="glyphicon glyphicon-time"></span>15 mins ago</small> <strong
+																class="pull-right primary-font">
 
-																	${usuario.nome}</strong>
-															</div>
-															${mensagemSist.resposta}
-															<button class="btn btn-warning btn-sm" id="btn-chat"
-																name="command" value="RespostaNaoValida">Sim</button>
-															<button class="btn btn-warning btn-sm" id="btn-chat"
-																name="command" value="RespostaValida">Não</button>
-														</div></li>
-												</c:forEach>
+																${usuario.nome}</strong>
+														</div>
+														${mensagemSist.resposta}
+														<button class="btn btn-warning btn-sm" id="btn-chat"
+															name="command" value="RespostaNaoValida">Sim</button>
+														<button class="btn btn-warning btn-sm" id="btn-chat"
+															name="command" value="RespostaValida">Não</button>
+													</div></li>
 											</c:forEach>
-										</c:if>
+										</c:forEach>
 									</c:if>
+								</c:if>
 							</ul>
 						</div>
 						<div class="panel-footer">
@@ -149,6 +149,12 @@
 							</div>
 						</div>
 					</div>
+					<form id="form1">
+						<h1>AJAX Demo using Jquery in JSP and Servlet</h1>
+						Enter your Name: <input type="text" id="user" /> <input
+							type="button" name="command" id="submit" value="ActionServlet" /> <br />
+					</form>
+					<div id="welcometext"></div>
 				</div>
 			</div>
 		</div>
@@ -156,8 +162,21 @@
 </body>
 
 <footer> </footer>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js">
+</script>
+<script>
+            $(document).ready(function() {
+                $('#submit').click(function(event) {
+                    var username=$('#user').val();
+                 $.get('ActionServlet',{user:username},function(responseText) {
+                        $('#welcometext').append(responseText);
+                        console.log(responseText);
+                    });
+                });
+            });
+</script>
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
-</html>
+
 </html>

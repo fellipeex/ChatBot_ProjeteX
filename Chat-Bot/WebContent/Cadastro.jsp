@@ -28,21 +28,6 @@
 <body>
 	<c:import url="Menu.jsp" />
 
-	<!--painel de login-->
-	<div class="login-botao" id="selected">
-		<div class="account-wall">
-			<img class="profile-img"
-				src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-				alt="">
-			<form action="controller.do" method="post" class="form-signin">
-				<input type="email" name="email" class="form-control"
-					placeholder="email" required autofocus> <input name="senha"
-					type="password" class="form-control" placeholder="senha" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit"
-					name="command" value="FazerLogin">Sign in</button>
-			</form>
-		</div>
-	</div>
 
 	<!-- Projects Row -->
 	<div class="row" id="cadastro">

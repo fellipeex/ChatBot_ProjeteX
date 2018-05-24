@@ -29,7 +29,7 @@
 
 			<ul class="navbar-form navbar-right">
 				<a href="Cadastro.jsp" class="btn btn-default">Inscrever-se</a>
-				<button data-toggle="collapse" data-target="#demo">Login</button>
+				<button class="btn btn-info"data-toggle="collapse" data-target="#demo">Login</button>
 			</ul>
 		</div>
 	</div>
@@ -71,7 +71,7 @@
 </nav>
 
 <!--painel de login-->
-<div class="collapse" id="demo">
+<div class="collapse" id="demo" style="width:30em; margin-left:40%; position:fixed;z-index:1000">
 	<div class="account-wall">
 		<img class="profile-img"
 			src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
