@@ -98,6 +98,7 @@ public class MensagemDao {
 		ArrayList<Resposta> lista_pal_chave = new ArrayList<Resposta>();
 		String sqlSearch = "SELECT idtblMensagens,tblMensagensPalChave,tblMensagenResposta FROM dbprojeto.tblMensagens";
 		// try
+		
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSearch);) {
 			try (ResultSet rs = stm.executeQuery();) {
@@ -115,6 +116,7 @@ public class MensagemDao {
 			e1.printStackTrace();
 		}
 		return lista_pal_chave;
+		
 	}
 
 	public void criarPergunta(Pergunta pergunta) {

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import model.Pergunta;
 import model.Resposta;
 import service.MensagemService;
@@ -25,8 +27,7 @@ public class CriarResposta implements Command {
 		pergunta.setPergunta(pMensagem);
 
 		MensagemService rs = new MensagemService();
-
-		RequestDispatcher view = null;
+		
 		HttpSession session = request.getSession();
 
 		// cria a pergunta do usuario
@@ -40,7 +41,6 @@ public class CriarResposta implements Command {
 		}
 
 		session.setAttribute("lista_pergunta", lista_pergunta);
-		view = request.getRequestDispatcher("ChatBot.jsp");
 
 		// verifica a resposta para pergunta do usuario
 		Resposta resposta = new Resposta();
@@ -49,6 +49,7 @@ public class CriarResposta implements Command {
 			
 		// coloca as perguntas que estao na session em um array
 		@SuppressWarnings("unchecked")
+		
 		ArrayList<Resposta> lista_resposta = (ArrayList<Resposta>) session.getAttribute("lista_resposta");
 		
 		
@@ -62,13 +63,12 @@ public class CriarResposta implements Command {
 
 		// adiciona a resposta do sistema na session
 		session.setAttribute("lista_resposta", lista_resposta);
-		view.forward(request, response);
 		
-		int contador = (int) session.getAttribute("contator");
 		
-		if (contador != null) {
-			contador ++;
-		}
+		String listaRespostaJson = new Gson().toJson(lista_resposta);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(listaRespostaJson);	
 	}
 
 }

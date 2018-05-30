@@ -1,6 +1,9 @@
 package command;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,29 +14,30 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ActionServlet
  */
 
-public class ActionServlet extends HttpServlet {
+public class ActionServlet extends HttpServlet implements Command{
 	private static final long serialVersionUID = 1L;
 
 	public ActionServlet() {
 		// TODO Auto-generated constructor stub
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	@Override
+	public void executar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String name = null;
 		name = "Hello " + request.getParameter("user");
 		if (request.getParameter("user").toString().equals("")) {
 			name = "Hello User";
 		}
-		response.setContentType("text/plain");
+		List<String> list = new ArrayList<>();
+		list.add(name);
+		String json = new Gson().toJson(list);
+		
+		
+		response.setContentType("application/Json");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(name);
-		System.out.println("passou aqui");
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.getWriter().write(json);
+	
 
 	}
 	

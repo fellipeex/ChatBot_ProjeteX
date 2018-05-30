@@ -24,12 +24,12 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class=""><a href="index.jsp">Home</a></li>
-				<li class=""><a href="tela-chat-bot.jsp">Chat Bot</a></li>
 			</ul>
 
 			<ul class="navbar-form navbar-right">
 				<a href="Cadastro.jsp" class="btn btn-default">Inscrever-se</a>
-				<button class="btn btn-info"data-toggle="collapse" data-target="#demo">Login</button>
+				<button class="btn btn-info" data-toggle="collapse"
+					data-target="#demo">Login</button>
 			</ul>
 		</div>
 	</div>
@@ -40,38 +40,52 @@
 
 				<h5 class="text-left text-danger titulo-menu">Menu</h5>
 
-				<li><a href="#">
-						<div class="glyphicon glyphicon-chevron-right"></div>Informações
-				</a></li>
+				<c:choose>
+					<c:when test="${not empty logado}">
+						<li><a href="#">
+								<div class="glyphicon glyphicon-chevron-right"></div>Informações
+						</a></li>
 
-				<li><a href="ChatBot.jsp">
-						<div class="glyphicon glyphicon-chevron-right"></div> ChatBot
-				</a></li>
+						<li><a href="ChatBot.jsp">
+								<div class="glyphicon glyphicon-chevron-right"></div> ChatBot
+						</a></li>
 
-				<li><a href="Cadastro.jsp">
-						<div class="glyphicon glyphicon-chevron-right"></div> Se Cadastrar
-				</a></li>
+						<li><a href="Cadastro.jsp">
+								<div class="glyphicon glyphicon-chevron-right"></div> Se
+								Cadastrar
+						</a></li>
 
-				<li><a href="Relatorios.jsp">
-						<div class="glyphicon glyphicon-chevron-right"></div> Acessar
-						Relatórios
-				</a></li>
-				<li><a href="CriarRespostas.jsp">
-						<div class="glyphicon glyphicon-chevron-right"></div> Criar
-						Respostas
-				</a></li>
-				<hr />
-				<p class="container text-left">
-					Para acessar a ferramenta <br /> você deverá estar logado. <br />
-					<br /> <a href="Cadastro.jsp" class="btn btn-info btn-xs">Inscrever-se</a>
-				</p>
+						<li><a href="Relatorios.jsp">
+								<div class="glyphicon glyphicon-chevron-right"></div> Acessar
+								Relatórios
+						</a></li>
+						<li><a href="CriarRespostas.jsp">
+								<div class="glyphicon glyphicon-chevron-right"></div> Criar
+								Respostas
+						</a></li>
+						<li><a href="FormContato.jsp">
+								<div class="glyphicon glyphicon-chevron-right"></div> Entrar em contato
+						</a></li>
+					</c:when>
+					<c:otherwise>
+						<hr />
+						<p class="container text-left">
+							Para acessar a ferramenta <br /> você deverá estar logado. <br />
+							<br /> <a href="Cadastro.jsp" class="btn btn-info btn-xs">Inscrever-se</a>
+						</p>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</div>
 	</div>
 </nav>
 
+
+
+
 <!--painel de login-->
-<div class="collapse" id="demo" style="width:30em; margin-left:40%; position:fixed;z-index:1000">
+<div class="collapse" id="demo"
+	style="width: 30em; margin-left: 40%; position: fixed; z-index: 1000">
 	<div class="account-wall">
 		<img class="profile-img"
 			src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"

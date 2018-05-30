@@ -72,7 +72,11 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							<ul class="chat">
+
+
+
+
+							<ul class="chat" id="chat">
 
 								<li class="right clearfix"><span
 									class="chat-img pull-right"> <img
@@ -88,92 +92,120 @@
 										<p>Olá digite algo para começarmos.</p>
 									</div></li>
 
-
-
-								<c:if test="${not empty lista_pergunta}">
-									<c:if test="${not empty lista_resposta}">
-										<c:forEach var="mensagem" items="${lista_pergunta}">
-											<c:forEach var="mensagemSist" items="${lista_resposta}">
-												<li class="left clearfix"><span
-													class="chat-img pull-left"> <img
-														src="http://placehold.it/50/55C1E7/fff&text=U"
-														alt="User Avatar" class="img-circle" />
-												</span>
-													<div class="chat-body clearfix">
-														<div class="header">
-															<strong class="primary-font">Jack Sparrow</strong> <small
-																class="pull-right text-muted"> <span
-																class="glyphicon glyphicon-time"></span>14 mins ago
-															</small>
-														</div>
-														${mensagem.pergunta}
-													</div></li>
-
-
-												<li class="right clearfix"><span
-													class="chat-img pull-right"> <img
-														src="http://placehold.it/50/FA6F57/fff&text=ME"
-														alt="User Avatar" class="img-circle" />
-												</span>
-													<div class="chat-body clearfix">
-														<div class="header">
-															<small class=" text-muted"><span
-																class="glyphicon glyphicon-time"></span>15 mins ago</small> <strong
-																class="pull-right primary-font">
-
-																${usuario.nome}</strong>
-														</div>
-														${mensagemSist.resposta}
-														<button class="btn btn-warning btn-sm" id="btn-chat"
-															name="command" value="RespostaNaoValida">Sim</button>
-														<button class="btn btn-warning btn-sm" id="btn-chat"
-															name="command" value="RespostaValida">Não</button>
-													</div></li>
-											</c:forEach>
-										</c:forEach>
-									</c:if>
-								</c:if>
 							</ul>
+
+
+
 						</div>
 						<div class="panel-footer">
 							<div class="input-group">
-								<form action="controller.do" method="post">
-									<input id="btn-input" type="text" name="resposta"
-										class="form-control input-sm"
-										placeholder="Type your message here..." /> <span
-										class="input-group-btn">
-										<button class="btn btn-warning btn-sm" id="btn-chat"
-											type="submit" name="command" value="CriarResposta">Enviar</button>
+								<form>
+									<input id="mensagem" type="text" name="resposta"
+										class="form-control input-lg"
+										placeholder="Digite aqui sua mensagem..." /> <span
+										class="input-group-btn"> <input
+										class="btn btn-warning btn-sm" type="button" id="submit"
+										value="Responder"> <!-- <button id="submit"
+											type="submit" name="command" value="CriarResposta">Enviar</button> -->
 									</span>
 								</form>
 							</div>
 						</div>
 					</div>
-					<form id="form1">
-						<h1>AJAX Demo using Jquery in JSP and Servlet</h1>
-						Enter your Name: <input type="text" id="user" /> <input
-							type="button" name="command" id="submit" value="ActionServlet" /> <br />
-					</form>
-					<div id="welcometext"></div>
 				</div>
 			</div>
 		</div>
+	
+	
+	
+	<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirmar redirecionamento</h4>
+        </div>
+        <div class="modal-body">
+          <p>Deseja entrar em contato com um de nossos atendentes?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+          <a type="button" class="btn btn-success" href="FormContato.jsp">Sim</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+	
+	
+	
 	</div>
+	
+	
 </body>
 
 <footer> </footer>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js">
+	
 </script>
 <script>
-            $(document).ready(function() {
-                $('#submit').click(function(event) {
-                    var username=$('#user').val();
-                 $.get('ActionServlet',{user:username},function(responseText) {
-                        $('#welcometext').append(responseText);
-                        console.log(responseText);
-                    });
-                });
-            });
+		$('#submit').click(enviaResposta);
+		
+		function enviaResposta(event) {
+			var mensagem = $('#mensagem').val();
+			$.get('controller.do?command=CriarResposta',{resposta:mensagem},function(data){
+				novaPergunta(mensagem);
+				var n = $(document).height();
+				criaResposta(data);
+				$(".panel-body").animate({ scrollTop: n }, 50);
+				
+				if(data.length > 1){
+					console.log("array ta maior q 3 en zika");
+				}
+			});
+			 $('#mensagem').val('');
+			}
+			
+			function criaResposta(data){
+				var corpo = '<li class="right clearfix">'
+					+ '<span class="chat-img pull-right">'
+					+ '<img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />'
+					+ '</span><div class="chat-body clearfix"><div class="header"><small class=" text-muted">'
+					+ '<span class="glyphicon glyphicon-time"></span>15 mins ago</small> <strong class="pull-right primary-font">'
+					+ '<p>Usuario</p>'
+					+ '</strong></div>'
+					+ data[0].resposta
+					+ '<br><small>Essa resposta esta coerente?</small>'
+					+ '<button class="btn btn-warning btn-sm" id="btn-chat"'
+					+ 'data-toggle="modal" data-target="#myModal">Sim</button>'
+					+ '<button class="btn btn-warning btn-sm" id="btn-chat"'
+					+ 'name="command" value="RespostaValida">Não</button>'
+					+ '</div></li>';
+					var chat = $("#chat");
+					chat.append(corpo);
+			}
+			
+			function novaPergunta(mensagem){
+				var corpoPergunta = '<li class="left clearfix">'
+					+'<span class="chat-img pull-left">' 
+					+'<img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />'
+					+ '</span><div class="chat-body clearfix">'
+					+ '<div class="header">'
+					+ '<strong class="primary-font">Jack Sparrow</strong>'
+					+ '<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time">'
+					+ '</span>14 mins ago </small> </div>'
+					+ mensagem +'</div></li>';
+					var chat = $("#chat");
+				chat.append(corpoPergunta); 
+				
+			}
+			
+			
+			
+
 </script>
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
