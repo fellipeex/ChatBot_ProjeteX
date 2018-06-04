@@ -51,12 +51,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbprojeto`.`tblRelatorioUso`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `dbprojeto`.`tblRelatorioUso` ;
+DROP TABLE IF EXISTS `dbprojeto`.`PergitblRelatorioUso` ;
 
-CREATE TABLE IF NOT EXISTS `dbprojeto`.`tblRelatorioUso` (
-  `idtblRelatorioUso` INT NOT NULL auto_increment,
-  `tblRelatorioData` TIMESTAMP NOT NULL,
-  `tblRelatorioResolvido` INT NULL,
+CREATE TABLE IF NOT EXISTS `dbprojeto`.`tblUso` (
+  `idtblUso` INT NOT NULL auto_increment,
+  `tblUsoData` TIMESTAMP NOT NULL,
+  `tblUsoEncaminhado` INT NULL,
+  `tblUsoInteracao` INT NULL,
+  `tblUsoTent` VARCHAR(45) NOT NULL ,
+  `tblRelatorioIdMensagens` VARCHAR(45) NOT NULL ,
   `tblRelatorioIdMensagens` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idtblRelatorioUso`))
 ENGINE = InnoDB;

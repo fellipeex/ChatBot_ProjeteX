@@ -2,16 +2,20 @@ package service;
 
 import java.util.ArrayList;
 
-import javax.websocket.Session;
-
 import dao.MensagemDao;
+import model.Atendimento;
 import model.Pergunta;
 import model.Resposta;
 import model.Usuario;
 
 public class MensagemService {
 	MensagemDao dao = new MensagemDao();
-
+	
+	public void criarAtendimento(Atendimento atd) {
+		dao.criarAtendimento(atd);
+	}
+	
+	
 	public void criarPergunta(Pergunta pergunta) {
 		dao.criarPergunta(pergunta);
 	}

@@ -25,12 +25,6 @@
 			<ul class="nav navbar-nav">
 				<li class=""><a href="index.jsp">Home</a></li>
 			</ul>
-
-			<ul class="navbar-form navbar-right">
-				<a href="Cadastro.jsp" class="btn btn-default">Inscrever-se</a>
-				<button class="btn btn-info" data-toggle="collapse"
-					data-target="#demo">Login</button>
-			</ul>
 		</div>
 	</div>
 	<div id="wrapper">
@@ -43,21 +37,16 @@
 				<c:choose>
 					<c:when test="${not empty logado}">
 						<li><a href="#">
-								<div class="glyphicon glyphicon-chevron-right"></div>Informações
+								<div class="glyphicon glyphicon-chevron-right"></div>Informacoes
 						</a></li>
 
 						<li><a href="ChatBot.jsp">
 								<div class="glyphicon glyphicon-chevron-right"></div> ChatBot
 						</a></li>
 
-						<li><a href="Cadastro.jsp">
-								<div class="glyphicon glyphicon-chevron-right"></div> Se
-								Cadastrar
-						</a></li>
-
 						<li><a href="Relatorios.jsp">
 								<div class="glyphicon glyphicon-chevron-right"></div> Acessar
-								Relatórios
+								Relatorios
 						</a></li>
 						<li><a href="CriarRespostas.jsp">
 								<div class="glyphicon glyphicon-chevron-right"></div> Criar
@@ -70,7 +59,7 @@
 					<c:otherwise>
 						<hr />
 						<p class="container text-left">
-							Para acessar a ferramenta <br /> você deverá estar logado. <br />
+							Para acessar a ferramenta <br /> voce devera estar logado. <br />
 							<br /> <a href="Cadastro.jsp" class="btn btn-info btn-xs">Inscrever-se</a>
 						</p>
 					</c:otherwise>

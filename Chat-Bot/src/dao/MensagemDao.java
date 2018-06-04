@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import model.Atendimento;
 import model.Pergunta;
 import model.Resposta;
 import model.Usuario;
@@ -127,5 +128,31 @@ public class MensagemDao {
 	public void criarResposta(String resposta) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void criarAtendimento(Atendimento atd) {
+		String sqlInsert = "INSERT INTO dbprojeto.tblUso (tblUsoData, tblUsoEncaminhado, tblUsoTent)"+
+							"VALUES (?,?,?,?)";
+		
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
+			stm.setString(1, atd.getData());
+			stm.setString(2, atd.getEncaminhado());
+			stm.setString(3, atd.getTentativas());
+			stm.setInt(4, atd.getInteracao());
+			stm.execute();
+
+			String sqlQuery = "SELECT LAST_INSERT_ID()";
+			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
+					ResultSet rs = stm2.executeQuery();) {
+				if (rs.next()) {
+					atd.setId((rs.getInt(1)));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

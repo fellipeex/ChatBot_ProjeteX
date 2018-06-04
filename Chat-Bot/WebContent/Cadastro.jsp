@@ -26,8 +26,34 @@
 </head>
 
 <body>
-	<c:import url="Menu.jsp" />
-
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar-header">
+	
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+				<span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand point" id="menu-toggle"><i id="menu-toggle"
+				class="fa fa-bars" aria-hidden="true"></i></a> <a class="navbar-brand"
+				href="#"> CHAT BOT</a>
+		</div>
+		<div class="container-fluid">
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class=""><a href="index.jsp">Home</a></li>
+				</ul>
+	
+				<ul class="navbar-form navbar-right">
+					<a href="Cadastro.jsp" class="btn btn-default">Inscrever-se</a>
+					<button class="btn btn-info" data-toggle="collapse"
+						data-target="#demo">Login</button>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
 
 	<!-- Projects Row -->
 	<div class="row" id="cadastro">

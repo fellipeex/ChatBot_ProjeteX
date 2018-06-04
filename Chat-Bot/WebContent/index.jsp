@@ -25,16 +25,62 @@
 
 </head>
 
-<c:import url="Menu.jsp" />
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="navbar-header">
+
+		<button type="button" class="navbar-toggle collapsed"
+			data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+			aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand point" id="menu-toggle"><i id="menu-toggle"
+			class="fa fa-bars" aria-hidden="true"></i></a> <a class="navbar-brand"
+			href="#"> CHAT BOT</a>
+	</div>
+	<div class="container-fluid">
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class=""><a href="index.jsp">Home</a></li>
+			</ul>
+
+			<ul class="navbar-form navbar-right">
+				<a href="Cadastro.jsp" class="btn btn-default">Inscrever-se</a>
+				<button class="btn btn-info" data-toggle="collapse"
+					data-target="#demo">Login</button>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+<!--painel de login-->
+<div class="collapse" id="demo"
+	style="width: 30em; margin-left: 40%; position: fixed; z-index: 1000">
+	<div class="account-wall">
+		<img class="profile-img"
+			src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+			alt="">
+		<form action="controller.do" method="post" class="form-signin">
+			<input type="email" name="email" class="form-control"
+				placeholder="email" required autofocus> <input name="senha"
+				type="password" class="form-control" placeholder="senha" required>
+			<button class="button1 btn btn-lg btn-primary btn-block"
+				type="submit" name="command" value="FazerLogin">Sign in</button>
+		</form>
+	</div>
+</div>
+
 <div class="container">
 	<div class="inicio-texto">
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
 					<div class="glyphicon glyphicon-hand-right"></div>
-					Informações <small>
+					Informacoes <small>
 						<h5 class="pull-right">
-							O que você poderá fazer com esta ferramenta <a href="#"
+							O que voce podera fazer com esta ferramenta <a href="#"
 								class="btn btn-danger btn-xs"><i
 								class="glyphicon glyphicon-question-sign" aria-hidden="true"></i></a>
 						</h5>
@@ -46,9 +92,9 @@
 		<div class="row">
 			<div class="texto">
 				<p>
-					Com esta ferramenta você terá a sua disposição um bot que poderá
-					responder todas suas duvidas, <br>alguém para conversar e
-					ainda alguém que aprenderá tudo com você! (:
+					Com esta ferramenta vocï¿½ terï¿½ a sua disposiï¿½ï¿½o um bot que poderï¿½
+					responder todas suas duvidas, <br>alguï¿½m para conversar e
+					ainda alguï¿½m que aprenderï¿½ tudo com vocï¿½! (:
 				</p>
 			</div>
 		</div>
@@ -66,9 +112,9 @@
 						</div>
 						<div class="blog-box-content">
 							<h4>
-								<a href="#">Ações do Bot</a>
+								<a href="#">Aï¿½ï¿½es do Bot</a>
 							</h4>
-							<p>O bot realiza diversar funções a x por exemplo permite que
+							<p>O bot realiza diversar funï¿½ï¿½es a x por exemplo permite que
 								ele te responda o que voce quiser perguntar.</p>
 							<a href="" class="btn btn-default site-btn">Experimente!</a>
 						</div>
@@ -86,9 +132,9 @@
 							<h4>
 								<a hre f="#">Recursos Fantasticos</a>
 							</h4>
-							<p>Graças a uma avançaada tecnologia de inteligencia
+							<p>GraÃ§as a uma avanÃ§ada tecnologia de inteligencia
 								artificial o seu bot podera consultar uma enorme base de dados
-								feita por vc e poderá prever e responder suas principais
+								feita por vc e poderÃ¡ prever e responder suas principais
 								duvidas.</p>
 							<a href="" class="btn btn-default site-btn">Experimente!</a>
 						</div>
@@ -106,8 +152,8 @@
 							<h4>
 								<a href="#">Acesse de qualquer lugar</a>
 							</h4>
-							<p>ApÃ³s se inscrever você poderá acessar o seu bot de
-								qualquer lugar do mundo de forma rápida e fácil sem necessidade
+							<p>ApÃ³s se inscrever vocï¿½ poderï¿½ acessar o seu bot de
+								qualquer lugar do mundo de forma rï¿½pida e fï¿½cil sem necessidade
 								de instalar nenhum software</p>
 							<a href="#cadatrar" class="btn btn-default site-btn">Experimente!</a>
 						</div>
