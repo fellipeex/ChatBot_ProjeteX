@@ -3,22 +3,16 @@ package model;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+
 	private int id;
 	private String nome;
-	private String fone;
-	private String email;
 	private String senha;
+	private String email;
 
-	public Usuario() {
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	@Override
+	public String toString() {
+		return "Usuario [username=" + nome + ", password=" + senha + "]";
 	}
 
 	public String getNome() {
@@ -29,27 +23,27 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getFone() {
-		return fone;
+	public int getId() {
+		return id;
 	}
 
-	public void setFone(String fone) {
-		this.fone = fone;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getEmail() {
 		return email;
 	}
-	
-	public String getSenha() {
-		return senha;
-	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;		
 	}
 }
