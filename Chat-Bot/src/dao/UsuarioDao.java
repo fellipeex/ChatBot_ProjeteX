@@ -10,7 +10,7 @@ import model.Usuario;
 public class UsuarioDao {
 
 	public void criar(Usuario usuario) {
-		String sqlInsert = "INSERT INTO dbprojeto.tblusuario (tblUsuarioNome, tblUsuarioEmail, tblUsuarioSenha) VALUES (?,?,?)";
+		String sqlInsert = "INSERT INTO tblUsuario (tblUsuarioNome, tblUsuarioEmail, tblUsuarioSenha) VALUES (?,?,?)";
 
 		try (Connection conn = ConnectionFactory.obtemConexao();
 
@@ -26,7 +26,7 @@ public class UsuarioDao {
 	}
 
 	public void atualizar(Usuario usuario) {
-		String sqlUpdate = "UPDATE usuario SET nome=?, area=?,populacao = ?";
+		String sqlUpdate = "UPDATE tblUsuario SET tblUsuarioNome=?, tblUsuarioEmail=?,tblUsuarioSenha = ?";
 
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlUpdate);) {
