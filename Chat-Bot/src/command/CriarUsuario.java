@@ -19,7 +19,7 @@ public class CriarUsuario implements Command{
 		String pUnome = request.getParameter("Unome");
 		String pEmail =  request.getParameter("email");
 		String pSenha =  request.getParameter("senha");
-		String Pnome  = pPnome + pUnome;
+		String Pnome  = pPnome + " " + pUnome;
 	
 		//instanciar o javabean
 		Usuario user = new Usuario();
