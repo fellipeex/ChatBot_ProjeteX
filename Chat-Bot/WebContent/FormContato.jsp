@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,7 +10,7 @@
 <meta name="description" content="Youtube">
 <meta name="author" content="Johan">
 <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-<title>CHAT BOT - São Judas</title>
+<title>CHAT BOT - Sï¿½o Judas</title>
 <link rel="stylesheet" href="resourcers/css/estilo.css">
 <link rel="stylesheet" type="text/css"
 	href="https://bootswatch.com/3/flatly/bootstrap.css">
@@ -27,51 +27,38 @@
 </head>
 
 <body>
-	<c:import url="Menu.jsp"/>
-	<div class="container">
-		<div class="conteudo">
-			<h1>Chat Bot</h1>
-			<p>Login Realizado com sucesso! (:</p>
-		</div>
-	</div>
-
-
-	<div class="container text-center">
-		<div class="row">
-			<div class="round hollow text-center chat-text">
-				<a href="#" id="addClass"><span
-					class="glyphicon glyphicon-comment"></span>Abrir Chat </a>
-			</div>
-
-			<hr>
-		</div>
-	</div>
+	<c:import url="Menu.jsp" />
 	<div class="container">
 
-		<h2>Digite sua dúvida que nao foi respondida</h2>
+		<h2>Entre em contato conosco para solucionar a sua duvida que nao
+			foi respondida.</h2>
 
+		<div class ="panel panel-default">
 		<div class="formulario-contato">
 
 			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">@</span> <input
-					type="text" class="form-control" placeholder="Nome de usuário..."
-					aria-describedby="basic-addon1">
-			</div> 	
+				<p>Nome:</p>
+				<input type="text" class="form-control"
+					placeholder="Nome de usuario" aria-describedby="basic-addon1">
+			</div>
 			<br>
 			<div class="input-group">
-				<span class="input-group-addon" id="assunto">@</span> <input
-					type="text" class="form-control" placeholder="Assunto"
+				<p>Assunto:</p>
+				<input type="text" class="form-control" placeholder="Assunto"
 					aria-describedby="basic-addon1">
 			</div>
 			<br> <label for="comment">Comment:</label>
 			<textarea class="form-control"
-				placeholder="Digite a sua dúvida e entraremos em contato em breve..."
+				placeholder="Digite a sua duvida e entraremos em contato em breve..."
 				rows="5" id="comment"></textarea>
+			<br>
 		</div>
+		</div>
+		<br>
 	</div>
 </body>
 
-    <footer> </footer>
+<footer> </footer>
 <script src="jquery.min.js"></script>
 <script src="bootstrap.min.js"></script>
 <script type="text/javascript" src="app.js"></script>

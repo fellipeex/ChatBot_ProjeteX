@@ -28,6 +28,7 @@ public class CriarAtendimento implements Command{
 		atd.setInteracao(pInteracao);
 		
 		
+		
 		MensagemService ms = new MensagemService();
 		ms.criarAtendimento(atd);
 	}

@@ -132,7 +132,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Nao</button>
-          <a type="button" class="btn btn-success" href="FormContato.jsp">Sim</a>
+          <a type="button" class="btn btn-success" href="tela-chat-bot.jsp">Sim</a>
         </div>
       </div>
       
@@ -151,12 +151,13 @@
 	
 </script>
 <script>
-		$('#submit').click(enviaResposta);
-		$('#successResposta').click(criaRespostaSuccess);
+		$('#submit').click(enviaResposta); 
 		var qntdResposta = [];
 		var atdHumano;
-	
+		var n = $(document).height();
+		var dados;
 		function gravaAtendimento(){
+				console.log("passoa aq");
 				data = Date.now;
 				duracaoIntUsuario = qntdResposta.length;
 				var encaminhado = atdHumano;
@@ -171,10 +172,9 @@
 			var mensagem = $('#mensagem').val();
 			$.post('controller.do?command=CriarResposta',{resposta:mensagem},function(data){
 				novaPergunta(mensagem);
-				var n = $(document).height();
-				criaResposta(data);
+				dados = data;
+				criaResposta(data,posResposta=0);
 				$(".panel-body").animate({ scrollTop: n }, 50);
-				criaRespostaDefault();
 				if(data.length > 3){
 					console.log("array ta maior q 3 en zika");
 				}
@@ -182,7 +182,7 @@
 			 $('#mensagem').val('');
 			}
 			
-			function criaResposta(data){
+			function criaResposta(data, posResposta){
 				var corpo = '<li class="right clearfix" id="resposta">'
 					+ '<span class="chat-img pull-right">'
 					+ '<img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />'
@@ -190,10 +190,12 @@
 					+ '<span class="glyphicon glyphicon-time"></span>1 mins ago</small> <strong class="pull-right primary-font">'
 					+ '<p>Sistema</p>'
 					+ '</strong></div>'
-					+ data[0].resposta
+					+ data[posResposta].resposta
 					var chat = $("#chat");
 					chat.append(corpo).fadeIn(2000);;
 					qntdResposta.push(corpo);
+					criaRespostaDefault();
+					$(".panel-body").animate({ scrollTop: n }, 50);
 			}
 			
 			function criaRespostaDefault(){
@@ -205,32 +207,36 @@
 					+ '<p>Sistema</p>'
 					+ '</strong></div>'
 					+ '<br>Satifeita com a Resposta ?</small>'
-					+ '<button class="btn btn-warning btn-sm" id="successResposta"'
-					+ 'data-toggle="modal" data-target="#myModal">Sim</button>'
-					+ '<button class="btn btn-warning btn-sm" id="btn-chat"'
-					+ 'name="command" value="RespostaValida">Nao</button>'
+					+ '<button class="btn btn-warning btn-sm" id="successResposta">Sim</button>'
+					+ '<button class="btn btn-warning btn-sm" id="respostaSegunda">Nao</button>'
 					+ '</div></li>';
 					var chat = $("#chat");
-					chat.append(corpo).fadeIn(2000);;
+					chat.append(corpo).fadeIn(3000);
+					$('#successResposta').click(criaRespostaSuccess);
+					$('#respostaSegunda').click(enviaResposta);
+					$(".panel-body").animate({ scrollTop: n }, 50);
+					
 			}
-			
+
 			function criaRespostaSuccess(){
 				var corpo = '<li class="right clearfix" id="resposta">'
 					+ '<span class="chat-img pull-right">'
 					+ '<img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />'
 					+ '</span><div class="chat-body clearfix"><div class="header"><small class=" text-muted">'
 					+ '<span class="glyphicon glyphicon-time"></span>15 mins ago</small> <strong class="pull-right primary-font">'
-					+ '<p>Usuario</p>'
+					+ '<p>Sistema</p>'
 					+ '</strong></div>'
 					+ '<p>Obrigado pelo contato!'
 					+ '<button class="btn btn-warning btn-sm" id="btn-chat"'
 					+ 'data-toggle="modal" data-target="#myModal">Enviar por Email</button>'
-					+ '<button class="btn btn-warning btn-sm" id="fechar">Fechar</button>'
+					+ '<a href="tela-chat-bot.jsp" class="btn btn-warning btn-sm" id="fechar">Fechar</button>'
 					+ '</div></li>';
 					var chat = $("#chat");
 					chat.append(corpo).fadeIn(2000);;
 					gravaAtendimento;
-					atdHumano = 'nao';			}
+					atdHumano = 'nao';
+					$(".panel-body").animate({ scrollTop: n }, 50);
+				}
 			
 			
 			function novaPergunta(mensagem){
@@ -239,16 +245,18 @@
 					+'<img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />'
 					+ '</span><div class="chat-body clearfix">'
 					+ '<div class="header">'
-					+ '<strong class="primary-font">Você</strong>'
+					+ '<strong class="primary-font">Voce</strong>'
 					+ '<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time">'
 					+ '</span>14 mins ago </small> </div>'
 					+ mensagem +'</div></li>';
 					var chat = $("#chat");
-				chat.append(corpoPergunta).fadeIn(2000);; 
+				chat.append(corpoPergunta).fadeIn(2000);
+				$(".panel-body").animate({ scrollTop: n }, 50);
 				
 			}
 			
-			
+			$('#successResposta').click(criaRespostaSuccess);
+			$('#respostaSegunda').click(enviaResposta);
 			
 
 </script>

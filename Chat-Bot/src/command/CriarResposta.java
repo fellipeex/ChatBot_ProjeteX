@@ -48,8 +48,7 @@ public class CriarResposta implements Command {
 		session.setAttribute("lista_respostas_validas", resultado_respostas);
 			
 		// coloca as perguntas que estao na session em um array
-		@SuppressWarnings("unchecked")
-		
+		@SuppressWarnings("unchecked")	
 		ArrayList<Resposta> lista_resposta = (ArrayList<Resposta>) session.getAttribute("lista_resposta");
 		
 		
