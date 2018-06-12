@@ -35,7 +35,7 @@
 			<p>Crie as respostas que deveram ser mostradas para os usuários! (:</p>
 			<p>Cadastre as palavras chaves e em seguida a resposta que o sistema dará!</p>
 			<br>
-			Coloque cada palavra chave separada por uma virgula "," e um espaço " ".
+			Resposta Cadastrada com sucesso!
 		</div>
     </div>
     <br>

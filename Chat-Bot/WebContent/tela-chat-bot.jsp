@@ -35,78 +35,78 @@
 			<h1>Chat Bot</h1>
 			<p>Login Realizado com sucesso! (:</p>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<h3 class="text-center">Como utilizar a ferramenta</h3>
-			<p>
-				Siga os passoas a seguir para um melhor funcionamento da ferramenta
-				<br> NÃ£o esqueÃ§a que o chatbot irÃ¡ aprender conforme as
-				interaÃ§Ãµes forem acontecendo.
-			</p>
-			<ul class="timeline">
-				<li>
-					<div class="timeline-image">
-						<img class="img-circle img-responsive" src="" alt="">
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>Primeiro Passo</h4>
-							<h4 class="subheading">Criando as Reposta do Sistema</h4>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="text-center">Como utilizar a ferramenta</h3>
+				<p>
+					Siga os passoas a seguir para um melhor funcionamento da ferramenta
+					<br> Não esqueça que o chatbot irá aprender conforme as
+					interações forem acontecendo.
+				</p>
+				<ul class="timeline">
+					<li>
+						<div class="timeline-image">
+							<img class="img-circle img-responsive" src="" alt="">
 						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Para que o sistema entenda o que o
-								usuario esta escrevendo e necessaio que vc configure primeiro
-								algumas palavras chave. Por isso clique na aba ao lado no link
-								de criar novas respsotas.</p>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4>Primeiro Passo</h4>
+								<h4 class="subheading">Criando as Reposta do Sistema</h4>
+							</div>
+							<div class="timeline-body">
+								<p class="text-muted">Para que o sistema entenda o que o
+									usuario esta escrevendo e necessaio que vc configure primeiro
+									algumas palavras chave. Por isso clique na aba ao lado no link
+									de criar novas respsotas.</p>
+							</div>
 						</div>
-					</div>
-					<div class="line"></div>
-				</li>
-				<li class="timeline-inverted">
-					<div class="timeline-image">
-						<img class="img-circle img-responsive"
-							src="http://loremdasdsapixel.com/250/250/cats/2" alt="">
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>Segundo Passo</h4>
-							<h4 class="subheading">Crie um roteiro para o chat bot</h4>
+						<div class="line"></div>
+					</li>
+					<li class="timeline-inverted">
+						<div class="timeline-image">
+							<img class="img-circle img-responsive"
+								src="http://loremdasdsapixel.com/250/250/cats/2" alt="">
 						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Crie um pequeno roteiro que seja
-								consistente na hora de escolher suas palavras chaves. Assim
-								quando seus usuários estiverem utilizando a ferramenta nao
-								ficaram perdidos.</p>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4>Segundo Passo</h4>
+								<h4 class="subheading">Crie um roteiro para o chat bot</h4>
+							</div>
+							<div class="timeline-body">
+								<p class="text-muted">Crie um pequeno roteiro que seja
+									consistente na hora de escolher suas palavras chaves. Assim
+									quando seus usuários estiverem utilizando a ferramenta nao
+									ficaram perdidos.</p>
+							</div>
 						</div>
-					</div>
-					<div class="line"></div>
-				</li>
-				<li>
-					<div class="timeline-image">
-						<img class="img-circle img-responsive"
-							src="http://loremdasdapixel.com/250/250/catsss/3" alt="">
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>Terceiro Passo</h4>
-							<h4 class="subheading">Relatorios</h4>
+						<div class="line"></div>
+					</li>
+					<li>
+						<div class="timeline-image">
+							<img class="img-circle img-responsive"
+								src="http://loremdasdapixel.com/250/250/catsss/3" alt="">
 						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Apos criadas as as respostas é só
-								conferir atraves do relatorio de uso quantas pessoas utlizaram a
-								ferramenta. Quais palavras chaves mais utilizadas dentre outras
-								informações importantes.</p>
+						<div class="timeline-panel">
+							<div class="timeline-heading">
+								<h4>Terceiro Passo</h4>
+								<h4 class="subheading">Relatórios</h4>
+							</div>
+							<div class="timeline-body">
+								<p class="text-muted">Apos criadas as as respostas é só
+									conferir atraves do relatorio de uso quantas pessoas utlizaram
+									a ferramenta. Quais palavras chaves mais utilizadas dentre
+									outras informações importantes.</p>
+							</div>
 						</div>
-					</div>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	<div class="container">
 		<hr>
 
-		<div class="container text-center">
+		<div class="text-center">
 			<div class="row">
 				<div class="round hollow text-center chat-text">
 					<a href="ChatBot.jsp" id="addClass"><span

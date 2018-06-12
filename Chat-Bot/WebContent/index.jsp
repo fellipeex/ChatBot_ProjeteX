@@ -92,9 +92,9 @@
 		<div class="row">
 			<div class="texto">
 				<p>
-					Com esta ferramenta vocï¿½ terï¿½ a sua disposiï¿½ï¿½o um bot que poderï¿½
-					responder todas suas duvidas, <br>alguï¿½m para conversar e
-					ainda alguï¿½m que aprenderï¿½ tudo com vocï¿½! (:
+					Com esta ferramenta você terá a sua disposição um bot que poderá
+					responder todas suas duvidas, <br>alguém para conversar e
+					ainda alguém que aprenderá tudo com você (:
 				</p>
 			</div>
 		</div>
@@ -112,9 +112,9 @@
 						</div>
 						<div class="blog-box-content">
 							<h4>
-								<a href="#">Aï¿½ï¿½es do Bot</a>
+								<a href="#">Ações do Bot</a>
 							</h4>
-							<p>O bot realiza diversar funï¿½ï¿½es a x por exemplo permite que
+							<p>O bot realiza diversar funções de cadastrar perguntas por exemplo permite que
 								ele te responda o que voce quiser perguntar.</p>
 							<a href="" class="btn btn-default site-btn">Experimente!</a>
 						</div>
@@ -134,7 +134,7 @@
 							</h4>
 							<p>GraÃ§as a uma avanÃ§ada tecnologia de inteligencia
 								artificial o seu bot podera consultar uma enorme base de dados
-								feita por vc e poderÃ¡ prever e responder suas principais
+								feita por vc e poderá prever e responder suas principais
 								duvidas.</p>
 							<a href="" class="btn btn-default site-btn">Experimente!</a>
 						</div>
@@ -152,8 +152,8 @@
 							<h4>
 								<a href="#">Acesse de qualquer lugar</a>
 							</h4>
-							<p>ApÃ³s se inscrever vocï¿½ poderï¿½ acessar o seu bot de
-								qualquer lugar do mundo de forma rï¿½pida e fï¿½cil sem necessidade
+							<p>Após se inscrever você poderá acessar o seu bot de
+								qualquer lugar do mundo de forma rápida e fácil sem necessidade
 								de instalar nenhum software</p>
 							<a href="#cadatrar" class="btn btn-default site-btn">Experimente!</a>
 						</div>
