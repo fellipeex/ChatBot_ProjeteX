@@ -99,7 +99,7 @@ public class MensagemDao {
 		ArrayList<Resposta> lista_pal_chave = new ArrayList<Resposta>();
 		String sqlSearch = "SELECT idtblMensagens,tblMensagensPalChave,tblMensagenResposta FROM dbprojeto.tblMensagens";
 		// try
-		
+
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlSearch);) {
 			try (ResultSet rs = stm.executeQuery();) {
@@ -117,7 +117,7 @@ public class MensagemDao {
 			e1.printStackTrace();
 		}
 		return lista_pal_chave;
-		
+
 	}
 
 	public void criarPergunta(Pergunta pergunta) {
@@ -131,20 +131,18 @@ public class MensagemDao {
 	}
 
 	public void criarAtendimento(Atendimento atd) {
-		String sqlInsert = "INSERT INTO dbprojeto.tblUso (tblUsoData, tblUsoEncaminhado, tblUsoTent)"+
-							"VALUES (?,?,?,?)";
-		
+		String sqlInsert = "INSERT INTO dbprojeto.tblAtendimento (tblAtdData, tblUsoEncaminhado, tblUsoInteracao, tblUsoTent)"
+				+ "VALUES (now(),?,?,?)";
+
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(sqlInsert);) {
-			stm.setString(1, atd.getData());
-			stm.setString(2, atd.getEncaminhado());
-			stm.setString(3, atd.getTentativas());
-			stm.setInt(4, atd.getInteracao());
+			stm.setString(1, atd.getEncaminhado());
+			stm.setLong(2, atd.getTentativas());
+			stm.setString(3, atd.getInteracao());
 			stm.execute();
 
 			String sqlQuery = "SELECT LAST_INSERT_ID()";
-			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery);
-					ResultSet rs = stm2.executeQuery();) {
+			try (PreparedStatement stm2 = conn.prepareStatement(sqlQuery); ResultSet rs = stm2.executeQuery();) {
 				if (rs.next()) {
 					atd.setId((rs.getInt(1)));
 				}
@@ -154,5 +152,86 @@ public class MensagemDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public ArrayList<Atendimento> buscarRelatorioSem() {
+		ArrayList<Atendimento> lista_atd = new ArrayList<Atendimento>();
+		String sqlSearch = "SELECT * FROM tblAtendimento"
+				+ "WHERE  data BETWEEN DATE_SUB(now(), INTERVAL 7 DAY) AND now()";
+		// try
+
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlSearch);) {
+			try (ResultSet rs = stm.executeQuery();) {
+				while (rs.next()) {
+					Atendimento atendi = new Atendimento();
+					atendi.setId(rs.getInt("idtblMensagens"));
+					atendi.setData(rs.getString("tblAtdData"));
+					atendi.setTentativas(rs.getInt("tblUsoTent"));
+					atendi.setInteracao(rs.getString("tblUsoInteracao"));
+					lista_atd.add(atendi);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return lista_atd;
+	}
+
+	public ArrayList<Atendimento> buscarRelatorioDia() {
+		ArrayList<Atendimento> lista_atd = new ArrayList<Atendimento>();
+		String sqlSearch = "SELECT * FROM tblAtendimento"
+				+ "WHERE  data BETWEEN DATE_SUB(now(), INTERVAL 1 DAY) AND now()";
+		// try
+
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlSearch);) {
+			try (ResultSet rs = stm.executeQuery();) {
+				while (rs.next()) {
+					Atendimento atendi = new Atendimento();
+					atendi.setId(rs.getInt("idtblMensagens"));
+					atendi.setData(rs.getString("tblAtdData"));
+					atendi.setTentativas(rs.getInt("tblUsoTent"));
+					atendi.setInteracao(rs.getString("tblUsoInteracao"));
+					lista_atd.add(atendi);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return lista_atd;
+
+	}
+
+	public ArrayList<Atendimento> buscarRel1atorioMes() {
+		
+		ArrayList<Atendimento> lista_atd = new ArrayList<Atendimento>();
+		String sqlSearch = "SELECT * FROM tblAtendimento"
+				+ "WHERE  data BETWEEN DATE_SUB(now(), INTERVAL 30 DAY) AND now()";
+		// try
+
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlSearch);) {
+			try (ResultSet rs = stm.executeQuery();) {
+				while (rs.next()) {
+					Atendimento atendi = new Atendimento();
+					atendi.setId(rs.getInt("idtblMensagens"));
+					atendi.setData(rs.getString("tblAtdData"));
+					atendi.setTentativas(rs.getInt("tblUsoTent"));
+					atendi.setInteracao(rs.getString("tblUsoInteracao"));
+					lista_atd.add(atendi);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return lista_atd;
+
 	}
 }

@@ -38,7 +38,7 @@
 			<br>
 			<p>Agora e so conversar...</p>
 		</div>
-	</div>
+	</div>sap
 	<br>
 	<br>
 	<!--  chat bot -->
@@ -190,9 +190,10 @@
 					+ '<span class="glyphicon glyphicon-time"></span>1 mins ago</small> <strong class="pull-right primary-font">'
 					+ '<p>Sistema</p>'
 					+ '</strong></div>'
-					+ data[posResposta].resposta
+					+ data[posResposta].resposta;
+					
 					var chat = $("#chat");
-					chat.append(corpo).fadeIn(2000);;
+					chat.append(corpo).fadeIn(2000);
 					qntdResposta.push(corpo);
 					criaRespostaDefault();
 					$(".panel-body").animate({ scrollTop: n }, 50);
@@ -233,7 +234,7 @@
 					+ '</div></li>';
 					var chat = $("#chat");
 					chat.append(corpo).fadeIn(2000);;
-					gravaAtendimento;
+					gravaAtendimento();
 					atdHumano = 'nao';
 					$(".panel-body").animate({ scrollTop: n }, 50);
 				}

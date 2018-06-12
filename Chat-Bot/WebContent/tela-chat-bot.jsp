@@ -47,8 +47,7 @@
 			<ul class="timeline">
 				<li>
 					<div class="timeline-image">
-						<img class="img-circle img-responsive"
-							src="" alt="">
+						<img class="img-circle img-responsive" src="" alt="">
 					</div>
 					<div class="timeline-panel">
 						<div class="timeline-heading">

@@ -64,4 +64,49 @@ public class MensagemService {
 		}
 		return lista_resultado;
 	}
+
+
+	public ArrayList<Atendimento> criarRelatorio(String peri) {
+		ArrayList<Atendimento> lista_relatorio = new ArrayList<Atendimento>();
+		if(peri == "sem") {
+			lista_relatorio = dao.buscarRelatorioSem();
+		}
+		if(peri == "dia") {
+			lista_relatorio = dao.buscarRelatorioDia();
+		}
+		if(peri == "mes") {
+			lista_relatorio = dao.buscarRel1atorioMes();
+		}
+		return lista_relatorio;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

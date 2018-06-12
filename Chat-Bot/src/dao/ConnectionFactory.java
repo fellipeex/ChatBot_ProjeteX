@@ -19,7 +19,7 @@ public class ConnectionFactory {
 		public static Connection obtemConexao() throws SQLException {
 			if (conn.get() == null){
 				conn.set(DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/dbprojeto?user=root&password=root"));
+					.getConnection("jdbc:mysql://localhost:3306/dbprojeto?user=root&password=root&useSSL=false"));
 		}
 		return conn.get();
 	}
