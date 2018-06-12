@@ -53,7 +53,11 @@
 								Respostas
 						</a></li>
 						<li><a href="FormContato.jsp">
-								<div class="glyphicon glyphicon-chevron-right"></div> Entrar em contato
+								<div class="glyphicon glyphicon-chevron-right"></div> Entrar em
+								contato
+						</a></li>
+						<li><a href="Grupo.jsp">
+								<div class="glyphicon glyphicon-chevron-right"></div> Grupo 15
 						</a></li>
 					</c:when>
 					<c:otherwise>
